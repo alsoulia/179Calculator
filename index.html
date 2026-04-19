@@ -4,85 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name='impact-site-verification' value='b68a06da-acb0-4853-81d3-4b1e0bcad621'>
-    <title>2026 Section 179 Calculator | Tax Savings Estimate</title>
+    <title>179 Calculator | Business Tax Savings & Equipment Financing</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .calculator-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 500px; width: 100%; text-align: center; }
-        h1 { color: #333; margin-bottom: 10px; font-size: 24px; }
-        p.subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
-        .input-group { text-align: left; margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; font-size: 13px; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-        .result-box { background: #1a2b3c; color: white; padding: 25px; border-radius: 12px; margin-top: 30px; }
-        .result-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
-        .result-value { font-size: 36px; font-weight: bold; margin: 10px 0; color: #4ade80; }
-        .apply-btn { display: inline-block; width: 100%; padding: 15px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; transition: background 0.3s; }
-        .apply-btn:hover { background: #0056b3; }
+        :root { --primary: #007bff; --dark: #1a2b3c; --light: #f8f9fa; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
         
-        /* تصميم التذييل القانوني المطلوب من Impact */
-        footer { background: #ffffff; border-top: 1px solid #eee; padding: 40px 20px; text-align: center; width: 100%; box-sizing: border-box; }
-        .footer-links a { color: #007bff; text-decoration: none; font-weight: 600; margin: 0 10px; font-size: 14px; }
-        .footer-links a:hover { text-decoration: underline; }
-        .disclosure { font-size: 12px; color: #777; max-width: 800px; margin: 20px auto 0; line-height: 1.6; }
+        /* Navigation */
+        nav { background: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        nav .logo { font-weight: bold; font-size: 1.5rem; color: var(--dark); text-decoration: none; }
+        nav .links a { margin-left: 20px; text-decoration: none; color: #555; font-size: 0.9rem; font-weight: 500; }
+
+        /* Hero & Calculator */
+        .hero { padding: 60px 5%; text-align: center; background: white; }
+        .calculator-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; margin: -100px auto 50px; position: relative; border: 1px solid #eee; }
+        .input-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.85rem; color: #444; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+        .result-box { background: var(--dark); color: white; padding: 30px; border-radius: 12px; margin-top: 25px; }
+        .result-value { font-size: 2.5rem; font-weight: bold; color: #4ade80; margin: 10px 0; }
+        .apply-btn { display: block; background: var(--primary); color: white; padding: 18px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+
+        /* Sections for "Genuine Business" look */
+        section { padding: 60px 10%; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 25px; border-radius: 10px; border: 1px solid #eee; }
+
+        /* Footer */
+        footer { background: white; border-top: 1px solid #eee; padding: 50px 5%; text-align: center; }
+        .footer-links a { color: var(--primary); text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+        .disclosure { font-size: 0.8rem; color: #888; max-width: 800px; margin: 30px auto; line-height: 1.5; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="calculator-card">
-            <h1>2026 Section 179 Calculator</h1>
-            <p class="subtitle">Estimate your immediate tax savings on business equipment purchases.</p>
-            
-            <div class="input-group">
-                <label>EQUIPMENT COST ($)</label>
-                <input type="number" id="cost" value="50000" oninput="calculate()">
-            </div>
-            
-            <div class="input-group">
-                <label>TAX BRACKET (%)</label>
-                <select id="bracket" onchange="calculate()">
-                    <option value="0.21">21% (Standard Corporate Rate)</option>
-                    <option value="0.25">25%</option>
-                    <option value="0.35">35%</option>
-                </select>
-            </div>
-            
-            <div class="result-box">
-                <div class="result-label">Estimated Tax Savings</div>
-                <div class="result-value" id="savings">$10,500</div>
-                <p style="font-size: 13px; margin: 0;">This is the actual cash you keep in your pocket instead of paying it in taxes.</p>
-            </div>
+<nav>
+    <a href="#" class="logo">179Calculator</a>
+    <div class="links">
+        <a href="#calculator">Calculator</a>
+        <a href="#resources">Resources</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-            <a href="#" class="apply-btn">Apply for Equipment Financing →</a>
-            <p style="font-size: 11px; color: #999; margin-top: 15px;">SECURE & FAST APPROVAL THROUGH OUR PARTNERS</p>
+<header class="hero">
+    <h1>Maximize Your 2026 Tax Savings</h1>
+    <p>Empowering US Small Businesses with Section 179 Strategic Planning</p>
+</header>
+
+<div class="calculator-card" id="calculator">
+    <div class="input-group">
+        <label>TOTAL EQUIPMENT COST ($)</label>
+        <input type="number" id="cost" value="50000" oninput="calculate()">
+    </div>
+    <div class="input-group">
+        <label>CORPORATE TAX RATE (%)</label>
+        <select id="bracket" onchange="calculate()">
+            <option value="0.21">21% (Standard Corporate)</option>
+            <option value="0.25">25%</option>
+            <option value="0.35">35%</option>
+        </select>
+    </div>
+    <div class="result-box">
+        <div style="font-size: 0.8rem; opacity: 0.8;">TOTAL TAX DEDUCTION VALUE</div>
+        <div class="result-value" id="savings">$10,500</div>
+        <p style="font-size: 0.85rem; margin: 0;">Direct cash savings available for the 2026 tax year.</p>
+    </div>
+    <a href="#" class="apply-btn">Get Equipment Financing Quotes →</a>
+</div>
+
+<section id="resources" style="background: white;">
+    <div class="section-title">
+        <h2>Educational Resources</h2>
+        <p>Expert insights on Section 179 and Business Growth</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <h3>The 2026 Guide to Section 179</h3>
+            <p>Learn how to deduct the full purchase price of qualifying equipment from your gross income.</p>
+        </div>
+        <div class="card">
+            <h3>Qualifying Equipment List</h3>
+            <p>From heavy machinery to software, discover what qualifies for the 179 deduction this year.</p>
         </div>
     </div>
+</section>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <span style="color: #ddd;">|</span>
-            <a href="#">Contact Us</a>
-            <span style="color: #ddd;">|</span>
-            <a href="#">Terms of Service</a>
-        </div>
-        <p class="disclosure">
-            <strong>Affiliate Disclosure:</strong> 179calculator.com is a specialized utility platform. [cite: 181, 248] 
-            We may receive compensation from the companies whose products or services we feature. [cite: 249, 268] 
-            This compensation helps us maintain this tool and provide it for free to US business owners. [cite: 269] 
-            Our estimates are for informational purposes only; please consult with a tax professional. [cite: 267]
-        </p>
-        <p style="font-size: 11px; color: #bbb; margin-top: 10px;">&copy; 2026 179 Calculator. All rights reserved.</p>
-    </footer>
+<section id="about">
+    <div class="section-title">
+        <h2>About 179Calculator.com</h2>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p>Founded in 2026, our mission is to simplify the complex US tax code for entrepreneurs. We provide independent tools and resources to help business owners make informed decisions about equipment financing and tax strategies.</p>
+    </div>
+</section>
 
-    <script>
-        function calculate() {
-            const cost = document.getElementById('cost').value;
-            const bracket = document.getElementById('bracket').value;
-            const savings = cost * bracket;
-            document.getElementById('savings').innerText = '$' + savings.toLocaleString();
-        }
-    </script>
+<section id="contact" style="background: #f1f3f5; text-align: center;">
+    <h2>Get in Touch</h2>
+    <p>Questions about our tools? Contact us at: <strong>support@179calculator.com</strong></p>
+</section>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#contact">Contact Support</a>
+    </div>
+    <p class="disclosure">
+        <strong>Affiliate Disclosure:</strong> 179Calculator.com is an independent professional review and utility site. We may receive compensation from the companies whose products or services we feature. This compensation helps us maintain our tools free of charge for business owners. Our estimates are for informational purposes and do not constitute legal or tax advice.
+    </p>
+    <p style="font-size: 0.75rem; color: #ccc;">&copy; 2026 179 Calculator. All rights reserved.</p>
+</footer>
+
+<script>
+    function calculate() {
+        const cost = document.getElementById('cost').value;
+        const bracket = document.getElementById('bracket').value;
+        const savings = cost * bracket;
+        document.getElementById('savings').innerText = '$' + savings.toLocaleString();
+    }
+</script>
+
 </body>
 </html>
